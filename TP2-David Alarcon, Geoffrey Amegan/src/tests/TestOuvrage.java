@@ -3,8 +3,9 @@ package tests;
 import java.time.LocalDate;
 import java.util.List;
 
-import livres.Ouvrage;
 import livres.Auteur;
+import livres.Ouvrage;
+import livres.Serie;
 
 /**
  * CoursPOO 1
@@ -18,6 +19,7 @@ public class TestOuvrage {
         TestOuvrage test = new TestOuvrage();
         test.testOuvrages();
         test.testTrouver();
+        test.testSerie(); // <-- nouveau
     }
 
 
@@ -103,5 +105,39 @@ public class TestOuvrage {
     }
 
 
-}
+    // NOUVEAU - tests de la classe Serie
+    private void testSerie() {
+        //Deux auteurs deja prets pour les tests...
+        Auteur albertine = new Auteur("Albertine", "Tremblay", "Canada");
+        Auteur john = new Auteur("John", "Smith", "Etats-Unis");
 
+        Ouvrage livre1 = new Ouvrage("Tout va bien", albertine);
+        Ouvrage livre2 = new Ouvrage("Musique du hasard", john);
+        Ouvrage livre3 = new Ouvrage("Titre assez long", john);
+
+        System.out.println("\n-----Test de la classe Serie-----------");
+
+        //Créer une série vide
+        Serie serie = new Serie("Roman");
+        System.out.println("Série vide: " + serie);
+
+        //Ajouter des ouvrages à la série
+        serie.ajouterOuvrage(livre1);
+        serie.ajouterOuvrage(livre2);
+        serie.ajouterOuvrage(livre3);
+        System.out.println("Après ajout de 3 ouvrages: " + serie);
+
+        //Tenter d'ajouter null (ne doit pas être ajouté)
+        serie.ajouterOuvrage(null);
+        System.out.println("Après ajout null: " + serie);
+
+        //Retirer un ouvrage existant
+        System.out.println("Retirer livre2: " + serie.retirerOuvrage(livre2)); // true
+        System.out.println("Après retrait: " + serie);
+
+        //Tenter de retirer un ouvrage qui n'est plus dans la série
+        System.out.println("Retirer livre2 de nouveau: " + serie.retirerOuvrage(livre2)); // false
+    }
+
+
+}
