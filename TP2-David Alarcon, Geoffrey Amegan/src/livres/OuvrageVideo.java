@@ -13,17 +13,33 @@ public class OuvrageVideo extends Ouvrage {
         setTailleMb(tailleMb);
     }
 
+    // Constructor court - ajouté pour la cohérence avec les autres sous-classes
+    public OuvrageVideo(String titre, Auteur auteur) {
+        super(titre, auteur);
+        this.dureeMinutes = 0;
+        this.tailleMb = 0;
+    }
+
+    public int getDureeMinutes() {
+        return dureeMinutes;
+    }
+
+    // Validation corrigée >= 0 pour la cohérence avec OuvrageAudio
     public void setDureeMinutes(int dureeMinutes) {
-        if (dureeMinutes > 0) {
+        if (dureeMinutes >= 0) {
             this.dureeMinutes = dureeMinutes;
         } else {
             System.out.println("Durée invalide pour la vidéo : " + dureeMinutes);
         }
     }
 
-    // Setter avec validation simple
+    public int getTailleMb() {
+        return tailleMb;
+    }
+
+    // Validation corrigée >= 0 pour la cohérence avec OuvrageAudio
     public void setTailleMb(int tailleMb) {
-        if (tailleMb > 0) {
+        if (tailleMb >= 0) {
             this.tailleMb = tailleMb;
         } else {
             System.out.println("Taille invalide pour la vidéo : " + tailleMb);
@@ -33,6 +49,6 @@ public class OuvrageVideo extends Ouvrage {
     @Override
     public String toString() {
         // On appelle le toString() de la classe parente (Ouvrage) et on ajoute les infos vidéo
-        return super.toString() + " [Vidéo: " + dureeMinutes + " min, " + tailleMb + " Mb]";
+        return super.toString() + " - VIDEO - " + dureeMinutes + " min. (" + tailleMb + " Mb)";
     }
 }
