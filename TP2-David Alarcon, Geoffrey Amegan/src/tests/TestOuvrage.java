@@ -3,12 +3,7 @@ package tests;
 import java.time.LocalDate;
 import java.util.List;
 
-import livres.Auteur;
-import livres.Ouvrage;
-import livres.OuvrageAudio;
-import livres.OuvragePapier;
-import livres.Serie;
-import livres.Pays;
+import livres.*;
 
 /**
  * CoursPOO 1
@@ -160,5 +155,15 @@ public class TestOuvrage {
         System.out.println("Retirer livre2 de nouveau: " + serie.retirerOuvrage(livre2)); // false
     }
 
+    public void testOuvrageVideo() {
+        System.out.println("\n----- Test Ouvrage Video -----");
+
+        Pays canada = new Pays("Canada", "CAN");
+        Auteur monAuteur = new Auteur("Tremblay", "Albertine", canada);
+
+        OuvrageVideo maVideo = new OuvrageVideo("Tuto Java", monAuteur, LocalDate.now(), 5, 120, 750);
+
+        System.out.println(maVideo);
+    }
 
 }

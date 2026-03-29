@@ -2,6 +2,7 @@ package tests;
 
 import livres.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,8 @@ public class Librairie {
         ouvrages.add(new OuvragePapier("Titre 5", albertine));
         ouvrages.add(new OuvragePapier("Titre 6", john));
         ouvrages.add(new OuvragePapier("Titre 7", john));
-        ouvrages.add(new OuvragePapier("Titre 8", albertine)); // OuvrageVideo - à compléter
+        ouvrages.add(new OuvragePapier("Titre 8", albertine));
+        ouvrages.add(new OuvrageVideo("Titre 8", albertine, LocalDate.now(), 5, 120, 800));
         ouvrages.add(new OuvrageAudio("Titre 9", john));
         ouvrages.add(new OuvragePapier("Titre 10", jean));
     }
