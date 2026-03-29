@@ -8,6 +8,7 @@ import livres.Ouvrage;
 import livres.OuvrageAudio;
 import livres.OuvragePapier;
 import livres.Serie;
+import livres.Pays;
 
 /**
  * CoursPOO 1
@@ -27,8 +28,8 @@ public class TestOuvrage {
 
     public void testOuvrages() {
         //Deux auteurs deja prets pour les tests...
-        Auteur albertine = new Auteur("Albertine", "Tremblay", "Canada");
-        Auteur john = new Auteur("John", "Smith", "Etats-Unis");
+        Auteur albertine = new Auteur("Albertine", "Tremblay", new Pays("Canada", "CAN"));
+        Auteur john = new Auteur("John", "Smith", new Pays("Etats-Unis", "USA"));
 
         //Voici une partie des tests! Il faut en ajouter, pour les fonctionnalités non testées!
         System.out.println("-----Test des constructeurs d'ouvrage et des diverses validations-----------");
@@ -61,7 +62,7 @@ public class TestOuvrage {
 
         System.out.println("\n-----Tests des méthodes acheter et vendre-----------");
 
-        Ouvrage livre3 = new OuvragePapier("Musique du hasard", new Auteur("Paul", "Auster", "Etats-Unis"), LocalDate.now(), 5, 250);
+        Ouvrage livre3 = new OuvragePapier("Musique du hasard", new Auteur("Paul", "Auster", new Pays("Etats-Unis", "USA")), LocalDate.now(), 5, 250);
         System.out.println(livre3);
 
         livre3.acheter(5);
@@ -73,14 +74,14 @@ public class TestOuvrage {
         System.out.println("On peut vendre 10 livres? " + livre3.vendre(10));
         System.out.println(livre3);
 
-        Ouvrage livre4 = new OuvragePapier("Test", new Auteur("A", "B", "Etats-Unis"), LocalDate.now(), 5, 100);
+        Ouvrage livre4 = new OuvragePapier("Test", new Auteur("A", "B", new Pays("Etats-Unis", "USA")), LocalDate.now(), 5, 100);
 
         System.out.println("\n-----Tests de la  méthode equals()-----------");
         //Deux ouvrages égaux
-        Ouvrage livre5 = new OuvragePapier("Test", new Auteur("A", "B", "Etats-Unis"), null, 5, 100);
-        Ouvrage livre6 = new OuvragePapier("Test", new Auteur("A", "B", "Etats-Unis"), LocalDate.now(), 10, 200);
+        Ouvrage livre5 = new OuvragePapier("Test", new Auteur("A", "B", new Pays("Etats-Unis", "USA")), null, 5, 100);
+        Ouvrage livre6 = new OuvragePapier("Test", new Auteur("A", "B", new Pays("Etats-Unis", "USA")), LocalDate.now(), 10, 200);
         //Un qui ne l'est pas
-        Ouvrage livre7 = new OuvragePapier("Test", new Auteur("Z", "B", "Etats-Unis"), LocalDate.now(), 5, 100);
+        Ouvrage livre7 = new OuvragePapier("Test", new Auteur("Z", "B", new Pays("Etats-Unis", "USA")), LocalDate.now(), 5, 100);
 
         System.out.println("Test de la méthode equals d'bibliotheque.Ouvrage:" + livre4.equals(livre5));
         System.out.println("Test de la méthode equals d'bibliotheque.Ouvrage:" + livre4.equals(livre6));
@@ -113,13 +114,13 @@ public class TestOuvrage {
         Auteur john = bibliotheque.getAuteurs().get(1);
 
         System.out.println("\n-----Test de votre méthode trouverOuvrage-----------");
-        List<Ouvrage> resultat = bibliotheque.trouverOuvrages(new Auteur("Albertine", "Tremblay", "Canada"));
+        List<Ouvrage> resultat = bibliotheque.trouverOuvrages(new Auteur("Albertine", "Tremblay", new Pays("Canada", "CAN")));
         System.out.println("Livres de albertine: " + resultat);
 
         resultat = bibliotheque.trouverOuvrages(john);
         System.out.println("Livres de john: " + resultat);
 
-        resultat = bibliotheque.trouverOuvrages(new Auteur("Jacques", "Beaulieu", "France"));
+        resultat = bibliotheque.trouverOuvrages(new Auteur("Jacques", "Beaulieu", new Pays("France", "FRA")));
         System.out.println("Livres de Jacques: " + resultat);
     }
 
@@ -127,8 +128,8 @@ public class TestOuvrage {
     // NOUVEAU - tests de la classe Serie
     private void testSerie() {
         //Deux auteurs deja prets pour les tests...
-        Auteur albertine = new Auteur("Albertine", "Tremblay", "Canada");
-        Auteur john = new Auteur("John", "Smith", "Etats-Unis");
+        Auteur albertine = new Auteur("Albertine", "Tremblay", new Pays("Canada", "CAN"));
+        Auteur john = new Auteur("John", "Smith", new Pays("Etats-Unis", "USA"));
 
         //On utilise les sous-classes maintenant que Ouvrage est abstraite
         Ouvrage livre1 = new OuvragePapier("Tout va bien", albertine);
