@@ -13,7 +13,7 @@ public class Auteur {
 
     public static final String INCONNU = "Inconnu";
 
-    private String prenom = NON CONNU;
+    private String prenom = pas connu;
     private String nom = NON CONNU;
     private Pays paysOrigine;
 
