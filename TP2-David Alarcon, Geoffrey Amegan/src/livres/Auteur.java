@@ -13,8 +13,8 @@ public class Auteur {
 
     public static final String INCONNU = "Inconnu";
 
-    private String prenom = PAS CONNU;
-    private String nom = PAS CONNU;
+    private String prenom = NON CONNU;
+    private String nom = NON CONNU;
     private Pays paysOrigine;
 
     public Auteur(String prenom, String nom, Pays paysOrigine) {
