@@ -17,7 +17,8 @@ public class TestOuvrage {
         TestOuvrage test = new TestOuvrage();
         test.testOuvrages();
         test.testTrouver();
-        test.testSerie(); // <-- nouveau
+        test.testSerie();
+        test.testOuvrageVideo(); // <-- manquait dans le main!
     }
 
 
@@ -155,15 +156,40 @@ public class TestOuvrage {
         System.out.println("Retirer livre2 de nouveau: " + serie.retirerOuvrage(livre2)); // false
     }
 
+
+    // NOUVEAU - tests de la classe OuvrageVideo
     public void testOuvrageVideo() {
-        System.out.println("\n----- Test Ouvrage Video -----");
+        System.out.println("\n-----Test de la classe OuvrageVideo-----------");
 
-        Pays canada = new Pays("Canada", "CAN");
-        Auteur monAuteur = new Auteur("Tremblay", "Albertine", canada);
+        Auteur albertine = new Auteur("Albertine", "Tremblay", new Pays("Canada", "CAN"));
 
-        OuvrageVideo maVideo = new OuvrageVideo("Tuto Java", monAuteur, LocalDate.now(), 5, 120, 750);
+        //Test du constructeur court
+        OuvrageVideo video1 = new OuvrageVideo("Tuto Java", albertine);
+        System.out.println(video1);
 
-        System.out.println(maVideo);
+        //Test du constructeur complet
+        OuvrageVideo video2 = new OuvrageVideo("Tuto Java avancé", albertine, LocalDate.now(), 5, 120, 750);
+        System.out.println(video2);
+
+        //Test de la validation sur la durée (invalide puis valide)
+        video2.setDureeMinutes(-10); // invalide
+        video2.setDureeMinutes(90);  // valide
+        System.out.println(video2);
+
+        //Test de la validation sur la taille (invalide puis valide)
+        video2.setTailleMb(-100); // invalide
+        video2.setTailleMb(500);  // valide
+        System.out.println(video2);
+
+        //Test des méthodes acheter et vendre
+        video2.acheter(3);
+        System.out.println("Après achat de 3: " + video2);
+
+        System.out.println("On peut vendre 4 vidéos? " + video2.vendre(4));
+        System.out.println(video2);
+
+        System.out.println("On peut vendre 10 vidéos? " + video2.vendre(10));
+        System.out.println(video2);
     }
 
 }
